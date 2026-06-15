@@ -51,7 +51,7 @@
             "name": "弓"
         }
     ],
-    BossItemData: [
+    "BossItemData": [
         {
             "BossItemID": "1",
             "name": "暴風の種"
@@ -233,7 +233,7 @@
             "name": "堕天の羽"
         }
     ],
-    EnemyItemData: [
+    "EnemyItemData": [
         {
             "EnemyItemID": "1",
             "name": "不吉な仮面"
@@ -423,7 +423,7 @@
             "name": "優美なる焔剣の柄"
         }
     ],
-    SpecialtyProductData: [
+    "SpecialtyProductData": [
         {
             "SpecialtyProductID": "101",
             "name": "ドドリアン"
@@ -653,7 +653,7 @@
             "name": "琥珀香"
         }
     ],
-    TalentBookData: [
+    "TalentBookData": [
         {
             "TalentBookID": "101",
             "name": "自由"
@@ -739,7 +739,7 @@
             "name": "流浪"
         }
     ],
-    WeeklyBossData: [
+    "WeeklyBossData": [
         {
             "WeeklyBossID": "1",
             "name": "トワリン"
