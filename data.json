@@ -2051,6 +2051,17 @@
             "SpecialtyProductID": "109",
             "TalentBookID": "102",
             "WeeklyBossID": "12"
+        },
+        {
+            "CharID": "117",
+            "Name": "サンドローネ",
+            "ElementID": "6",
+            "WeaponTypeID": "2",
+            "BossItemID": "45",
+            "EnemyItemID": "41",
+            "SpecialtyProductID": "506",
+            "TalentBookID": "0",
+            "WeeklyBossID": "0"
         }
     ]
 }
