@@ -37,7 +37,7 @@
 
 .filter-group {
     display: grid;
-    grid-template-columns: 100px 1fr; /* ラベル列を固定、右側を伸張（さらに10px縮小） */
+    grid-template-columns: 90px 1fr; /* ラベル列を固定、右側を伸張（10px戻し） */
     align-items: center;
     gap: 6px; /* ラベルとボタンの間隔を狭める */
     width: 100%;
@@ -107,6 +107,16 @@
 .filter-toggle.active {
     background-color: #3498db; /* 選択時は色付き */
     color: #fff;
+}
+
+/* 片手剣／両手剣のみ小さめのフォントにする */
+.filter-toggle.weapon-small-font {
+    font-size: 11px;
+    box-sizing: border-box;
+    height: 41px; /* 他の武器種と同じ高さに固定 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 元素ボタンに元素固有色を反映させたい場合の補助クラス */
@@ -292,7 +302,27 @@
     cursor: pointer;
 }
 
+/* 詳細フィルターをボタン領域いっぱいに広げる */
+.filter-group > .filter-advanced {
+    grid-column: 2 / 3;
+    justify-self: stretch;
+    width: 100%;
+}
+
+/* `詳細フィルター` ボタンを `その他：` ラベルの左側に配置する */
+.filter-group.filter-other > .filter-label {
+    grid-column: 1 / 2; /* ラベルを左側に配置 */
+    text-align: left;
+    padding-right: 4px;
+}
+.filter-group.filter-other > .filter-advanced {
+    grid-column: 2 / 3; /* 右側のカラムに配置 */
+    justify-self: stretch;
+    width: 100%;
+}
+
 /* 表示モードによる列の表示切替 */
+.table-container.mode-break th:nth-child(1), .table-container.mode-break td:nth-child(1),
 .table-container.mode-break th:nth-child(3), .table-container.mode-break td:nth-child(3),
 .table-container.mode-break th:nth-child(4), .table-container.mode-break td:nth-child(4),
 .table-container.mode-break th:nth-child(8), .table-container.mode-break td:nth-child(8),
@@ -300,6 +330,7 @@
     display: none;
 }
 
+.table-container.mode-talent th:nth-child(1), .table-container.mode-talent td:nth-child(1),
 .table-container.mode-talent th:nth-child(3), .table-container.mode-talent td:nth-child(3),
 .table-container.mode-talent th:nth-child(4), .table-container.mode-talent td:nth-child(4),
 .table-container.mode-talent th:nth-child(5), .table-container.mode-talent td:nth-child(5) {
@@ -470,7 +501,7 @@ footer .copyright {
 
 /* 小画面でラベル列を狭める */
 @media (max-width: 600px) {
-    .filter-group { grid-template-columns: 60px 1fr; }
+    .filter-group { grid-template-columns: 50px 1fr; }
     .filter-label { font-size: 13px; }
 }
 
@@ -495,4 +526,5 @@ footer .copyright {
 
     /* ボタン類を押しやすく */
     .mode-btn, .filter-toggle, .filter-advanced { padding: 10px; font-size: 15px; }
+    .filter-toggle.weapon-small-font { font-size: 11px; }
 }

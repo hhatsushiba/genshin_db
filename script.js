@@ -84,6 +84,10 @@ function initializeFilters(data) {
         btn.dataset.type = "weapon";
         btn.dataset.value = String(weapon.WeaponTypeID);
         btn.textContent = weapon.name;
+        // 小さいフォントにする武器名を判定してクラスを追加（片手剣／両手剣）
+        if (weapon.name === '片手剣' || weapon.name === '両手剣') {
+            btn.classList.add('weapon-small-font');
+        }
         btn.addEventListener("click", () => {
             const val = btn.dataset.value;
             const idx = selectedFilters.weapons.indexOf(val);
