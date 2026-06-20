@@ -122,15 +122,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 片手剣／両手剣のみ小さめのフォントにする */
-.filter-toggle.weapon-small-font {
-    font-size: 11px;
-    box-sizing: border-box;
-    height: 41px; /* 他の武器種と同じ高さに固定 */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+/* 片手剣／両手剣用のスタイルはモバイル側のメディアクエリで設定します */
 
 /* 元素ボタンに元素固有色を反映させたい場合の補助クラス */
 .filter-buttons .elem-1.active { background-color: #ff4d4d; }
@@ -539,5 +531,13 @@ footer .copyright {
 
     /* ボタン類を押しやすく */
     .mode-btn, .filter-toggle, .filter-advanced { padding: 10px; font-size: 15px; }
-    .filter-toggle.weapon-small-font { font-size: 11px; }
+    /* SPのみ: 片手剣/両手剣のフォントと高さを調整（ボタン本体のパディングは変えない） */
+    .filter-toggle.weapon-small-font {
+        font-size: 12px;
+        box-sizing: border-box;
+        height: 41px; /* 他の武器種と同じ高さ */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
