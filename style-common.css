@@ -169,7 +169,14 @@
     max-width: 500px;
     width: 90%;
     max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    min-height: 0;
 }
 
 .modal-header {
@@ -178,12 +185,29 @@
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid #e0e0e0;
+    gap: 12px;
+}
+
+.modal-title-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    flex: 1 1 auto;
 }
 
 .modal-header h2 {
     margin: 0;
     font-size: 20px;
     color: #2c3e50;
+    white-space: nowrap;
+}
+
+.modal-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .close-btn {
@@ -197,7 +221,12 @@
 
 .close-btn:hover { color: #333; }
 
-.modal-body { padding: 20px; }
+.modal-body {
+    padding: 0 20px 20px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
 
 .filter-section { margin-bottom: 25px; }
 
@@ -232,9 +261,19 @@
 
 .modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 20px; border-top: 1px solid #e0e0e0; }
 
-.modal-tabs { display: flex; gap: 6px; padding: 8px 12px; border-bottom: 1px solid #eee; flex-wrap: wrap; }
+.modal-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+}
 
-.tab-btn { background: none; border: 1px solid transparent; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.tab-btn { background: none; border: 1px solid transparent; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; margin: 3px 0; }
 .tab-btn.active { background-color: #3498db; color: #fff; border-color: #3498db; }
 
 .tab-contents { padding: 12px; }
@@ -244,6 +283,17 @@
 .modal-filter-list { display: flex; flex-direction: column; gap: 8px; }
 
 .modal-filter-list .filter-checkbox { display: flex; align-items: center; gap: 8px; }
+
+.region-heading {
+    margin: 10px 0 2px;
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #d9e1ea;
+}
 
 .filter-advanced { padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; background-color: #fff; cursor: pointer; }
 
@@ -329,6 +379,37 @@ footer .copyright { margin-top: 10px; color: #fff; font-weight: bold; }
     .header-row { align-items: flex-start; flex-direction: column; gap: 10px; }
     .filter-controls { gap: 8px; }
     .modal { width: 96%; max-width: 96%; left: 50%; transform: translate(-50%, -50%); }
+    .modal-header {
+        padding: 14px 12px;
+        align-items: flex-start;
+    }
+    .modal-title-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .modal-header-buttons {
+        gap: 6px;
+    }
+    .modal-header-buttons .btn {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    .modal-tabs {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px;
+        padding: 8px;
+        top: 0;
+    }
+    .tab-btn {
+        min-width: 0;
+        padding: 5px 2px;
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: nowrap;
+        margin: 3px 0;
+    }
     .table-container { padding: 8px; box-shadow: none; overflow-x: auto; }
     table { width: 100%; table-layout: auto; font-size: 13px; }
     th, td { padding: 8px 8px; }
