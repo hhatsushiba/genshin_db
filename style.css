@@ -3,7 +3,12 @@
 /* フィルター制御 */
 .filter-controls {
     margin: 20px 0;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* PCでも縦並び */
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
 }
 
 .filter-btn {
@@ -24,34 +29,54 @@
 /* ヘッダー行: 見出しとフィルターを横並びに */
 .header-row {
     display: flex;
+    flex-direction: column; /* タイトルの下にフィルターを配置 */
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 16px;
 }
 
 .filter-group {
-    display: flex;
+    display: grid;
+    grid-template-columns: 160px 1fr; /* ラベル列を固定、右側を伸張 */
     align-items: center;
     gap: 8px;
+    width: 100%;
 }
 
 .filter-label {
     font-weight: bold;
     color: #34495e;
-    margin-right: 4px;
+    margin: 0;
     font-size: 14px;
+    white-space: nowrap;
+    text-align: left;
+    padding-right: 8px;
 }
 
 .filter-buttons {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto; /* ボタン群は残り幅を占める */
+}
+
+/* 各グループ内のボタンを均等に伸ばして左右端を揃える */
+.filter-buttons > .filter-toggle,
+.filter-buttons > .filter-btn,
+.filter-buttons > .mode-btn,
+.mode-controls > .mode-btn {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .mode-controls {
     display: flex;
     gap: 6px;
     align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .mode-btn {
@@ -443,57 +468,30 @@ footer .copyright {
     .filter-group { justify-content: space-between; }
 }
 
+/* 小画面でラベル列を狭める */
 @media (max-width: 600px) {
-    /* スマートフォン: フィルターを縦並びに、テーブルはカード表示へ変換 */
+    .filter-group { grid-template-columns: 120px 1fr; }
+    .filter-label { font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+    /* スマートフォン: フィルターを縦並び、テーブル表示を維持する */
     .content-wrap { padding: 12px; }
-    .header-row { align-items: flex-start; }
+    .header-row { align-items: flex-start; flex-direction: column; gap: 10px; }
     .filter-controls { gap: 8px; }
 
     /* モーダルは画面幅いっぱいに広げる */
     .modal { width: 96%; max-width: 96%; left: 50%; transform: translate(-50%, -50%); }
 
-    /* Table -> Card レイアウト変換 */
-    table, thead, tbody, th, td, tr { display: block; }
-    thead { display: none; }
-    tr { 
-        background-color: #fff;
-        margin-bottom: 12px;
-        padding: 12px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        border: 1px solid #eee;
-    }
-    td {
-        border: none;
-        padding: 6px 12px;
-        position: relative;
-        padding-left: 110px;
-        white-space: normal;
-    }
-    td:before {
-        position: absolute;
-        left: 12px;
-        top: 8px;
-        width: 90px;
-        font-weight: 700;
-        color: #555;
-        display: inline-block;
-    }
-    td:nth-of-type(1):before{ content: "ID"; }
-    td:nth-of-type(2):before{ content: "名前"; }
-    td:nth-of-type(3):before{ content: "元素"; }
-    td:nth-of-type(4):before{ content: "武器種"; }
-    td:nth-of-type(5):before{ content: "ボス素材"; }
-    td:nth-of-type(6):before{ content: "敵素材"; }
-    td:nth-of-type(7):before{ content: "特産品"; }
-    td:nth-of-type(8):before{ content: "天賦本"; }
-    td:nth-of-type(9):before{ content: "週ボス"; }
+    /* テーブルはそのまま表示。小さい画面では余白とフォントを調整して横スクロールを許容 */
+    .table-container { padding: 8px; box-shadow: none; overflow-x: auto; }
+    table { width: 100%; table-layout: auto; font-size: 13px; }
+    th, td { padding: 8px 8px; }
+    th { font-size: 13px; }
+    tr { background-color: transparent; box-shadow: none; border-radius: 0; margin-bottom: 0; }
 
-    /* テキストの整列とサイズ調整 */
-    th, td { font-size: 14px; }
-
-    /* テーブル本体の余白を縮める */
-    .table-container { padding: 8px; box-shadow: none; }
+    /* 長いテキストは折り返すが、必要に応じて横スクロールでテーブル全体を閲覧可能に */
+    td { white-space: normal; word-break: break-word; }
 
     /* ボタン類を押しやすく */
     .mode-btn, .filter-toggle, .filter-advanced { padding: 10px; font-size: 15px; }
