@@ -37,9 +37,9 @@
 
 .filter-group {
     display: grid;
-    grid-template-columns: 160px 1fr; /* ラベル列を固定、右側を伸張 */
+    grid-template-columns: 130px 1fr; /* ラベル列を固定、右側を伸張（さらに10px縮小） */
     align-items: center;
-    gap: 8px;
+    gap: 6px; /* ラベルとボタンの間隔を狭める */
     width: 100%;
 }
 
@@ -50,7 +50,7 @@
     font-size: 14px;
     white-space: nowrap;
     text-align: left;
-    padding-right: 8px;
+    padding-right: 4px; /* ラベルとボタンの間隔をさらに狭める */
 }
 
 .filter-buttons {
@@ -470,7 +470,7 @@ footer .copyright {
 
 /* 小画面でラベル列を狭める */
 @media (max-width: 600px) {
-    .filter-group { grid-template-columns: 120px 1fr; }
+    .filter-group { grid-template-columns: 90px 1fr; }
     .filter-label { font-size: 13px; }
 }
 
