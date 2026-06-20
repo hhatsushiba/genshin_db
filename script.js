@@ -16,6 +16,43 @@ const createMap = (arr, idKey) => {
     }, {});
 };
 
+const getRegionName = (id) => {
+    const regionByHundreds = {
+        1: 'モンド',
+        2: '璃月',
+        3: '稲妻',
+        4: 'スメール',
+        5: 'フォンテーヌ',
+        6: 'ナタ',
+        7: 'ナド・クライ'
+    };
+    const regionKey = Math.floor(Number(id) / 100);
+    return regionByHundreds[regionKey] || '';
+};
+
+const appendRegionSection = (container, items, idKey, checkboxType, checkboxPrefix) => {
+    let currentRegion = '';
+
+    [...items]
+        .sort((left, right) => Number(left[idKey]) - Number(right[idKey]))
+        .forEach(item => {
+            const regionName = getRegionName(item[idKey]);
+            if (regionName && regionName !== currentRegion) {
+                currentRegion = regionName;
+                const heading = document.createElement('div');
+                heading.className = 'region-heading';
+                heading.textContent = regionName;
+                container.appendChild(heading);
+            }
+
+            const id = `${checkboxPrefix}-${item[idKey]}`;
+            const wrap = document.createElement('label');
+            wrap.className = 'filter-checkbox';
+            wrap.innerHTML = `<input type="checkbox" id="${id}" data-type="${checkboxPrefix}" value="${item[idKey]}"><span>${item.name}</span>`;
+            container.appendChild(wrap);
+        });
+};
+
 /**
  * テーブルを再描画
  */
@@ -133,21 +170,8 @@ function initializeModalFilters(data) {
         enemyDiv.appendChild(wrap);
     });
 
-    (data.SpecialtyProductData || []).forEach(item => {
-        const id = `spec-${item.SpecialtyProductID}`;
-        const wrap = document.createElement('label');
-        wrap.className = 'filter-checkbox';
-        wrap.innerHTML = `<input type="checkbox" id="${id}" data-type="specialty" value="${item.SpecialtyProductID}"><span>${item.name}</span>`;
-        specialtyDiv.appendChild(wrap);
-    });
-
-    (data.TalentBookData || []).forEach(item => {
-        const id = `talent-${item.TalentBookID}`;
-        const wrap = document.createElement('label');
-        wrap.className = 'filter-checkbox';
-        wrap.innerHTML = `<input type="checkbox" id="${id}" data-type="talent" value="${item.TalentBookID}"><span>${item.name}</span>`;
-        talentDiv.appendChild(wrap);
-    });
+    appendRegionSection(specialtyDiv, data.SpecialtyProductData || [], 'SpecialtyProductID', 'specialty', 'spec');
+    appendRegionSection(talentDiv, data.TalentBookData || [], 'TalentBookID', 'talent', 'talent');
 
     (data.WeeklyBossData || []).forEach(item => {
         const id = `weekly-${item.WeeklyBossID}`;
@@ -288,10 +312,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (panel) panel.classList.add('active');
         }
     });
-    // apply/reset buttons in modal
-    const applyBtn = document.getElementById('apply-filters');
-    const resetBtn = document.getElementById('reset-filters');
-    if (applyBtn) applyBtn.addEventListener('click', () => {
+    // apply/reset buttons in modal (top and bottom)
+    const applyButtons = document.querySelectorAll('.modal-apply-btn');
+    const resetButtons = document.querySelectorAll('.modal-reset-btn');
+    applyButtons.forEach(applyBtn => applyBtn.addEventListener('click', () => {
         // collect checked values
         selectedFilters.bossItems = Array.from(document.querySelectorAll('#boss-filters input[type="checkbox"]:checked')).map(cb => cb.value);
         selectedFilters.enemyItems = Array.from(document.querySelectorAll('#enemy-filters input[type="checkbox"]:checked')).map(cb => cb.value);
@@ -300,8 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedFilters.weeklyBosses = Array.from(document.querySelectorAll('#weekly-filters input[type="checkbox"]:checked')).map(cb => cb.value);
         applyFilters();
         closeModal();
-    });
-    if (resetBtn) resetBtn.addEventListener('click', resetFilters);
+    }));
+    resetButtons.forEach(resetBtn => resetBtn.addEventListener('click', resetFilters));
     // display mode buttons
     document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode)));
     // set default mode
