@@ -1,0 +1,427 @@
+@charset "UTF-8";
+
+/* フィルター制御 */
+.filter-controls {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #2980b9;
+}
+
+/* ヘッダー行: 見出しとフィルターを横並びに */
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-label {
+    font-weight: bold;
+    color: #34495e;
+    margin-right: 4px;
+    font-size: 14px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.mode-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.mode-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.mode-btn.active {
+    background-color: #2ecc71;
+    color: #fff;
+    border-color: #27ae60;
+}
+
+.filter-toggle {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #bdc3c7; /* 非選択時は灰色（武器ボタン向け） */
+    color: #222;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.filter-toggle.active {
+    background-color: #3498db; /* 選択時は色付き */
+    color: #fff;
+}
+
+/* 元素ボタンに元素固有色を反映させたい場合の補助クラス */
+.filter-buttons .elem-1.active { background-color: #ff4d4d; }
+.filter-buttons .elem-2.active { background-color: #3399ff; }
+.filter-buttons .elem-3.active { background-color: #26de81; }
+.filter-buttons .elem-4.active { background-color: #a55eea; }
+.filter-buttons .elem-5.active { background-color: #2bcbba; }
+.filter-buttons .elem-6.active { background-color: #4b7bec; }
+.filter-buttons .elem-7.active { background-color: #f7b731; }
+
+/* 元素ボタン: 未選択は白背景・黒文字（白黒表示） */
+.filter-toggle.elem-1,
+.filter-toggle.elem-2,
+.filter-toggle.elem-3,
+.filter-toggle.elem-4,
+.filter-toggle.elem-5,
+.filter-toggle.elem-6,
+.filter-toggle.elem-7 {
+    background-color: #fff;
+    color: #111;
+    border: 1px solid #ddd;
+}
+
+/* モーダルのスタイル */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #34495e;
+    font-weight: bold;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.filter-checkbox label {
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9fbfd;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.filter-checkbox input[type="checkbox"]:checked  label {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* モーダル内のタブ */
+.modal-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: none;
+    border: 1px solid transparent;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tab-btn.active {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
+
+.tab-contents {
+    padding: 12px;
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.modal-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-filter-list .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-advanced {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* 表示モードによる列の表示切替 */
+.table-container.mode-break th:nth-child(3), .table-container.mode-break td:nth-child(3),
+.table-container.mode-break th:nth-child(4), .table-container.mode-break td:nth-child(4),
+.table-container.mode-break th:nth-child(8), .table-container.mode-break td:nth-child(8),
+.table-container.mode-break th:nth-child(9), .table-container.mode-break td:nth-child(9) {
+    display: none;
+}
+
+.table-container.mode-talent th:nth-child(3), .table-container.mode-talent td:nth-child(3),
+.table-container.mode-talent th:nth-child(4), .table-container.mode-talent td:nth-child(4),
+.table-container.mode-talent th:nth-child(5), .table-container.mode-talent td:nth-child(5) {
+    display: none;
+}
+
+/* デフォルトは全表示（mode-all は不要） */
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #bdc3c7;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #95a5a6;
+}
+/* ページ全体でフッターを最下部に押し出すための設定 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #34495e;
+    color: #fff;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fbfd;
+}
+
+tr:hover {
+    background-color: #f1f4f8;
+}
+
+/* ステータス・エラーメッセージ */
+.status-message {
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.status-message.error {
+    color: #e74c3c;
+}
+
+/* 元素別のカラーバッジ設定 */
+.element-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.elem-1 { background-color: #ff4d4d; } /* 炎 */
+.elem-2 { background-color: #3399ff; } /* 水 */
+.elem-3 { background-color: #26de81; } /* 風 */
+.elem-4 { background-color: #a55eea; } /* 雷 */
+.elem-5 { background-color: #2bcbba; } /* 草 */
+.elem-6 { background-color: #4b7bec; } /* 氷 */
+.elem-7 { background-color: #f7b731; } /* 岩 */
+
+/* フッターのスタイル設定 */
+footer {
+    background-color: #2c3e50;
+    color: #bdc3c7;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer .copyright {
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
+}
