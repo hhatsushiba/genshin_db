@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+/* PC固有の上書きのみを置く */
+
+/* PCでは幅いっぱいを使うが、特別な補正が必要ならここに追加する */
+.filter-group {
+    grid-template-columns: 90px 1fr;
+}
+
+.filter-label {
+    font-size: 14px;
+}
+
+/* `style-common.css` で共通化済みのため、PC専用の追加ルールは最小限 */
+
+filter_pc file created.

@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>キャラクター一覧</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Common styles first, then device-specific styles are loaded dynamically -->
+    <link rel="stylesheet" href="style-common.css">
+    <script>
+        (function(){
+            var head = document.getElementsByTagName('head')[0];
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            // treat iPad as mobile; otherwise use width breakpoint (<=600px)
+            var ua = navigator.userAgent || '';
+            var isMobileLike = /iPhone|Android/.test(ua) || /iPad/.test(ua) || window.innerWidth <= 600;
+            link.href = isMobileLike ? 'style_sp.css' : 'style_pc.css';
+            head.appendChild(link);
+
+            // optional: switch on resize/orientation change
+            var pending; window.addEventListener('resize', function(){
+                clearTimeout(pending);
+                pending = setTimeout(function(){
+                    var nowMobile = /iPhone|Android/.test(navigator.userAgent||'') || /iPad/.test(navigator.userAgent||'') || window.innerWidth <= 600;
+                        var desired = nowMobile ? 'style_sp.css' : 'style_pc.css';
+                    if(link.href.indexOf(desired) === -1){
+                        link.href = desired;
+                    }
+                }, 150);
+            });
+        })();
+    </script>
 </head>
 <body>
 
