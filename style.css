@@ -37,7 +37,7 @@
 
 .filter-group {
     display: grid;
-    grid-template-columns: 130px 1fr; /* ラベル列を固定、右側を伸張（さらに10px縮小） */
+    grid-template-columns: 100px 1fr; /* ラベル列を固定、右側を伸張（さらに10px縮小） */
     align-items: center;
     gap: 6px; /* ラベルとボタンの間隔を狭める */
     width: 100%;
@@ -470,7 +470,7 @@ footer .copyright {
 
 /* 小画面でラベル列を狭める */
 @media (max-width: 600px) {
-    .filter-group { grid-template-columns: 90px 1fr; }
+    .filter-group { grid-template-columns: 60px 1fr; }
     .filter-label { font-size: 13px; }
 }
 
