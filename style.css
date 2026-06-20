@@ -109,6 +109,19 @@
     color: #fff;
 }
 
+/* モバイルでダブルタップ時のズームを抑制（タッチ操作向け最適化） */
+.mode-btn,
+.filter-toggle,
+.filter-advanced,
+.filter-btn,
+.tab-btn,
+.close-btn,
+.btn,
+.filter-checkbox label {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* 片手剣／両手剣のみ小さめのフォントにする */
 .filter-toggle.weapon-small-font {
     font-size: 11px;
