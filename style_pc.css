@@ -3,8 +3,33 @@
 /* PC固有の上書きのみを置く */
 
 /* PCでは幅いっぱいを使うが、特別な補正が必要ならここに追加する */
+.header-row {
+    align-items: flex-start;
+}
+
 .filter-group {
-    grid-template-columns: 90px 1fr;
+    grid-template-columns: 50px minmax(0, 60%);
+    justify-content: flex-start;
+}
+
+.mode-controls,
+.filter-buttons {
+    width: 100%;
+    max-width: none;
+    justify-content: flex-start;
+}
+
+.filter-group > .filter-advanced {
+    width: 100%;
+    max-width: none;
+}
+
+.filter-buttons > .filter-toggle,
+.filter-buttons > .filter-btn,
+.filter-buttons > .mode-btn,
+.mode-controls > .mode-btn {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .filter-label {
@@ -12,5 +37,3 @@
 }
 
 /* `style-common.css` で共通化済みのため、PC専用の追加ルールは最小限 */
-
-filter_pc file created.
