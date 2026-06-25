@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>育成素材計算</title>
+    <link rel="stylesheet" href="public/css/calculator/style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero-card">
+            <div>
+                <p class="eyebrow">Genshin Growth Planner</p>
+                <h1>キャラクター育成素材計算</h1>
+                <p class="hero-copy">`public/data.json` のキャラクター情報と天賦レベル設定を使って、通常攻撃・元素スキル・元素爆発の目標値に必要な素材数とモラをまとめて確認できます。</p>
+            </div>
+            <div class="hero-actions">
+                <a class="ghost-link" href="index.html">トップへ戻る</a>
+                <a class="ghost-link" href="CharacterIndex.html">キャラクターDBへ</a>
+            </div>
+        </header>
+
+        <main class="layout-grid">
+            <section class="panel controls-panel">
+                <div class="panel-heading">
+                    <h2>条件設定</h2>
+                    <span id="data-status" class="status-badge">データ確認中</span>
+                </div>
+
+                <div class="form-grid">
+                    <label class="field">
+                        <span>キャラクター</span>
+                        <select id="character-select"></select>
+                    </label>
+
+                    <label class="field">
+                        <span>現在レベル</span>
+                        <select id="current-level"></select>
+                    </label>
+
+                    <label class="field">
+                        <span>目標レベル</span>
+                        <select id="target-level"></select>
+                    </label>
+                </div>
+
+                <div class="talent-grid">
+                    <article class="talent-card">
+                        <h3>通常攻撃</h3>
+                        <div class="inline-fields">
+                            <label class="field compact">
+                                <span>現在</span>
+                                <select id="talent-normal-current"></select>
+                            </label>
+                            <label class="field compact">
+                                <span>目標</span>
+                                <select id="talent-normal-target"></select>
+                            </label>
+                        </div>
+                    </article>
+
+                    <article class="talent-card">
+                        <h3>元素スキル</h3>
+                        <div class="inline-fields">
+                            <label class="field compact">
+                                <span>現在</span>
+                                <select id="talent-skill-current"></select>
+                            </label>
+                            <label class="field compact">
+                                <span>目標</span>
+                                <select id="talent-skill-target"></select>
+                            </label>
+                        </div>
+                    </article>
+
+                    <article class="talent-card">
+                        <h3>元素爆発</h3>
+                        <div class="inline-fields">
+                            <label class="field compact">
+                                <span>現在</span>
+                                <select id="talent-burst-current"></select>
+                            </label>
+                            <label class="field compact">
+                                <span>目標</span>
+                                <select id="talent-burst-target"></select>
+                            </label>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="panel summary-panel">
+                <div class="panel-heading">
+                    <h2>合計必要量</h2>
+                </div>
+                <div id="summary-cards" class="summary-cards"></div>
+                <div id="selection-summary" class="selection-summary"></div>
+            </section>
+
+            <section class="panel detail-panel">
+                <div class="panel-heading">
+                    <h2>素材内訳</h2>
+                </div>
+                <div id="materials-table" class="materials-table"></div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>本サイトは個人が作成したファンサイトであり、公式とは一切関係ありません。<br>使用しているゲーム内情報の著作権は、miHoYo / HoYoverseに帰属します。</p>
+            <p class="copyright">© COGNOSPHERE. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="public/js/calculator/script.js"></script>
+</body>
+</html>
