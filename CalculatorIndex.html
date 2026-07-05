@@ -12,7 +12,7 @@
             <div>
                 <p class="eyebrow">Genshin Growth Planner</p>
                 <h1>キャラクター育成素材計算</h1>
-                <p class="hero-copy">`public/data.json` のキャラクター情報と天賦レベル設定を使って、通常攻撃・元素スキル・元素爆発の目標値に必要な素材数とモラをまとめて確認できます。</p>
+                <p class="hero-copy">キャラクター情報と天賦レベル設定を使って、通常攻撃・元素スキル・元素爆発の目標値に必要な素材数とモラをまとめて確認できます。</p>
             </div>
             <div class="hero-actions">
                 <a class="ghost-link" href="index.html">トップへ戻る</a>
@@ -24,7 +24,10 @@
             <section class="panel controls-panel">
                 <div class="panel-heading">
                     <h2>条件設定</h2>
-                    <span id="data-status" class="status-badge">データ確認中</span>
+                    <div class="mode-actions" role="group" aria-label="検索モード">
+                        <button id="mode-level" class="mode-button" type="button">レベルアップのみ</button>
+                        <button id="mode-talent" class="mode-button" type="button">天賦レベルのみ</button>
+                    </div>
                 </div>
 
                 <div class="form-grid">
@@ -89,17 +92,9 @@
                 </div>
             </section>
 
-            <section class="panel summary-panel">
-                <div class="panel-heading">
-                    <h2>合計必要量</h2>
-                </div>
-                <div id="summary-cards" class="summary-cards"></div>
-                <div id="selection-summary" class="selection-summary"></div>
-            </section>
-
             <section class="panel detail-panel">
                 <div class="panel-heading">
-                    <h2>素材内訳</h2>
+                    <h2>必要素材</h2>
                 </div>
                 <div id="materials-table" class="materials-table"></div>
             </section>

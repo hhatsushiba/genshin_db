@@ -1,4 +1,46 @@
 {
+    "AffiliationData": [
+        {
+            "AffiliationID": "1",
+            "name": "モンド"
+        },
+        {
+            "AffiliationID": "2",
+            "name": "璃月"
+        },
+        {
+            "AffiliationID": "3",
+            "name": "稲妻"
+        },
+        {
+            "AffiliationID": "4",
+            "name": "スメール"
+        },
+        {
+            "AffiliationID": "5",
+            "name": "フォンテーヌ"
+        },
+        {
+            "AffiliationID": "6",
+            "name": "ナタ"
+        },
+        {
+            "AffiliationID": "7",
+            "name": "ナド・クライ"
+        },
+        {
+            "AffiliationID": "8",
+            "name": "スネージナヤ"
+        },
+        {
+            "AffiliationID": "9",
+            "name": "カーンルイア"
+        },
+        {
+            "AffiliationID": "100",
+            "name": "不明"
+        }
+    ],
     "ElementData": [
         {
             "ElementID": "1",
@@ -797,7 +839,254 @@
             "name": "左道の真諦者"
         }
     ],
-    "tarent_level_up_settings": [
+    "characterLevelUpData": [
+        {
+            "current_level": 1,
+            "required_items": [
+                {
+                    "mora": 24035,
+                    "experience_book_quantity": 7
+                }
+            ]
+        },
+        {
+            "current_level": 20,
+            "required_items": [
+                {
+                    "mora": 115665,
+                    "experience_book_quantity": 29
+                }
+            ]
+        },
+        {
+            "current_level": 40,
+            "required_items": [
+                {
+                    "mora": 115820,
+                    "experience_book_quantity": 29
+                }
+            ]
+        },
+        {
+            "current_level": 50,
+            "required_items": [
+                {
+                    "mora": 170825,
+                    "experience_book_quantity": 43
+                }
+            ]
+        },
+        {
+            "current_level": 60,
+            "required_items": [
+                {
+                    "mora": 239185,
+                    "experience_book_quantity": 60
+                }
+            ]
+        },
+        {
+            "current_level": 70,
+            "required_items": [
+                {
+                    "mora": 322375,
+                    "experience_book_quantity": 81
+                }
+            ]
+        },
+        {
+            "current_level": 80,
+            "required_items": [
+                {
+                    "mora": 684625,
+                    "experience_book_quantity": 172
+                }
+            ]
+        }
+    ],
+    "AscensionLevelData": [
+        {
+            "current_level": 20,
+            "required_items": [
+                {
+                    "mora": 20000,
+                    "gemstone": [
+                        {
+                            "item_class": "sliver",
+                            "quantity": 1
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 0
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 3
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "beginner",
+                            "quantity": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "current_level": 40,
+            "required_items": [
+                {
+                    "mora": 40000,
+                    "gemstone": [
+                        {
+                            "item_class": "fragment",
+                            "quantity": 3
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 2
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 10
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "beginner",
+                            "quantity": 15
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "current_level": 50,
+            "required_items": [
+                {
+                    "mora": 60000,
+                    "gemstone": [
+                        {
+                            "item_class": "fragment",
+                            "quantity": 6
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 4
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 20
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "intermediate",
+                            "quantity": 12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "current_level": 60,
+            "required_items": [
+                {
+                    "mora": 80000,
+                    "gemstone": [
+                        {
+                            "item_class": "chenk",
+                            "quantity": 3
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 8
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 30
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "intermediate",
+                            "quantity": 18
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "current_level": 70,
+            "required_items": [
+                {
+                    "mora": 100000,
+                    "gemstone": [
+                        {
+                            "item_class": "chenk",
+                            "quantity": 6
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 12
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 45
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "advanced",
+                            "quantity": 12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "current_level": 80,
+            "required_items": [
+                {
+                    "mora": 120000,
+                    "gemstone": [
+                        {
+                            "item_class": "gemstone",
+                            "quantity": 6
+                        }
+                    ],
+                    "boss_item": [
+                        {
+                            "quantity": 20
+                        }
+                    ],
+                    "specialty_item": [
+                        {
+                            "quantity": 60
+                        }
+                    ],
+                    "enemy_item": [
+                        {
+                            "item_class": "advanced",
+                            "quantity": 24
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "talentLevelUpData": [
         {
             "current_level": 1,
             "required_items": [
@@ -2181,6 +2470,28 @@
             "SpecialtyProductID": "506",
             "TalentBookID": "703",
             "WeeklyBossID": "13"
+        },
+        {
+            "CharID": "118",
+            "Name": "オデット",
+            "ElementID": "6",
+            "WeaponTypeID": "",
+            "BossItemID": "",
+            "EnemyItemID": "",
+            "SpecialtyProductID": "",
+            "TalentBookID": "",
+            "WeeklyBossID": ""
+        },
+        {
+            "CharID": "119",
+            "Name": "アリョーシャ",
+            "ElementID": "4",
+            "WeaponTypeID": "",
+            "BossItemID": "",
+            "EnemyItemID": "",
+            "SpecialtyProductID": "",
+            "TalentBookID": "",
+            "WeeklyBossID": ""
         }
     ]
 }
