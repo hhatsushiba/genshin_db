@@ -21,7 +21,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }} # 自動で発行される一時的な権限トークン
           base: main                         # マージ先のブランチ
           branch: auto-pr/develop-to-main    # PR用に自動作成される一時的なブランチ名
-          title: "🔄 【自動】develop から main への反映"
+          title: "【自動】develop から main への反映"
           body: |
             GitHub Actionsによって自動生成されたプルリクエストです。
             developブランチの変更をmainにマージします。
