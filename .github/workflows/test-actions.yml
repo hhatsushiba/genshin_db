@@ -1,0 +1,20 @@
+name: GitHub Actions Demo
+
+# 💡 トリガー：どのイベントで動かすか（ここでは main ブランチへの push）
+on:
+  push:
+    branches: [ "main" ]
+
+# 💡 ジョブ：何を実行するか
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest # 実行する環境（Linux）
+
+    steps:
+      # 1. リポジトリのコードをチェックアウト（取得）する
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. 独自のコマンドを実行する
+      - name: Run a one-line script
+        run: echo "Hello, GitHub Actions!"
