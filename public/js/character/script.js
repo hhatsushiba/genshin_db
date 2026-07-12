@@ -104,6 +104,7 @@ function initializeFilters(data) {
         btn.dataset.value = String(element.ElementID);
         btn.textContent = element.name;
         btn.addEventListener("click", () => {
+            closeModal();
             const val = btn.dataset.value;
             const idx = selectedFilters.elements.indexOf(val);
             if (idx === -1) selectedFilters.elements.push(val);
@@ -126,6 +127,7 @@ function initializeFilters(data) {
             btn.classList.add('weapon-small-font');
         }
         btn.addEventListener("click", () => {
+            closeModal();
             const val = btn.dataset.value;
             const idx = selectedFilters.weapons.indexOf(val);
             if (idx === -1) selectedFilters.weapons.push(val);
@@ -188,6 +190,14 @@ function initializeModalFilters(data) {
 function openModal() {
     const modal = document.getElementById("filter-modal");
     const overlay = document.getElementById("modal-overlay");
+    const defaultTab = document.querySelector('#filter-modal .tab-btn[data-target="tab-boss"]');
+    const defaultPanel = document.getElementById('tab-boss');
+
+    document.querySelectorAll('#filter-modal .tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('#filter-modal .tab-panel').forEach(panel => panel.classList.remove('active'));
+    if (defaultTab) defaultTab.classList.add('active');
+    if (defaultPanel) defaultPanel.classList.add('active');
+
     if (modal) modal.style.display = 'block';
     if (overlay) overlay.style.display = 'block';
 }
@@ -200,7 +210,6 @@ function closeModal() {
 }
 
 function resetFilters() {
-    selectedFilters = { elements: [], weapons: [] };
     selectedFilters = { elements: [], weapons: [], bossItems: [], enemyItems: [], specialties: [], talentBooks: [], weeklyBosses: [] };
     document.querySelectorAll('.filter-toggle').forEach(btn => btn.classList.remove('active'));
     // clear modal checkboxes
@@ -295,7 +304,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (title) title.addEventListener('dblclick', resetFilters);
     // advanced filter button
     const advBtn = document.getElementById('advanced-filter-btn');
-    if (advBtn) advBtn.addEventListener('click', openModal);
+    if (advBtn) {
+        console.log('advanced filter button found');
+        advBtn.type = 'button';
+        advBtn.addEventListener('click', (event) => {
+            openModal();
+        });
+    }
     const closeModalBtn = document.getElementById('close-modal');
     const modalOverlay = document.getElementById('modal-overlay');
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
@@ -327,7 +342,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
     resetButtons.forEach(resetBtn => resetBtn.addEventListener('click', resetFilters));
     // display mode buttons
-    document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => setDisplayMode(btn.dataset.mode)));
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => {
+        closeModal();
+        setDisplayMode(btn.dataset.mode);
+    }));
     // set default mode
     setDisplayMode('all');
 });
