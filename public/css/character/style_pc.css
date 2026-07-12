@@ -2,11 +2,6 @@
 
 /* PC固有の上書きのみを置く */
 
-/* PCでは幅いっぱいを使うが、特別な補正が必要ならここに追加する */
-.header-row {
-    align-items: flex-start;
-}
-
 .filter-group {
     grid-template-columns: 50px minmax(0, 60%);
     justify-content: flex-start;
@@ -25,7 +20,6 @@
 }
 
 .filter-buttons > .filter-toggle,
-.filter-buttons > .filter-btn,
 .filter-buttons > .mode-btn,
 .mode-controls > .mode-btn {
     flex: 1 1 0;

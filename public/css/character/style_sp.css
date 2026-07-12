@@ -15,14 +15,9 @@
     font-size: 13px;
 }
 
-.content-wrap {
-    padding: 12px;
-}
-
-.header-row {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
+.page-container {
+    width: min(100% - 20px, 1240px);
+    padding: 20px 0 16px;
 }
 
 .modal {
