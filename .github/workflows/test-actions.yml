@@ -14,15 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 自動でプルリクエストを作成する定番アクション
+      # 2. 自動でプルリクエストを作成する
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # 自動で発行される一時的な権限トークン
-          base: main                         # マージ先のブランチ
-          branch: auto-pr/feature-to-main    # PR用に自動作成される一時的なブランチ名
-          title: "【自動】feature から main への反映"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          # 👇 ここを固定値ではなく、プッシュされた元のブランチ名にする
+          branch: ${{ github.ref_name }}
+          title: "【自動】${{ github.ref_name }} から main への反映"
           body: |
             GitHub Actionsによって自動生成されたプルリクエストです。
-            featureブランチの変更をmainにマージします。
-            変更内容を確認してマージしてください。
