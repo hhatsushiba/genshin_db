@@ -1,20 +1,28 @@
-name: GitHub Actions Demo
+name: Auto Create Pull Request
 
-# 💡 トリガー：どのイベントで動かすか（ここでは main ブランチへの push）
+# 💡 トリガー：developブランチにコードがプッシュされたら動く
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - develop
 
-# 💡 ジョブ：何を実行するか
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest # 実行する環境（Linux）
-
+  create-pr:
+    runs-on: ubuntu-latest
     steps:
-      # 1. リポジトリのコードをチェックアウト（取得）する
+      # 1. コードをチェックアウト
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 独自のコマンドを実行する
-      - name: Run a one-line script
-        run: echo "Hello, GitHub Actions!"
+      # 2. 自動でプルリクエストを作成する定番アクション
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # 自動で発行される一時的な権限トークン
+          base: main                         # マージ先のブランチ
+          branch: auto-pr/develop-to-main    # PR用に自動作成される一時的なブランチ名
+          title: "🔄 【自動】develop から main への反映"
+          body: |
+            GitHub Actionsによって自動生成されたプルリクエストです。
+            developブランチの変更をmainにマージします。
+            変更内容を確認してマージしてください。
