@@ -1,10 +1,10 @@
 name: Auto Create Pull Request
 
-# 💡 トリガー：developブランチにコードがプッシュされたら動く
+# 💡 トリガー：mainブランチまたはfeatureブランチにコードがプッシュされたら動く
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   create-pr:
@@ -20,9 +20,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # 自動で発行される一時的な権限トークン
           base: main                         # マージ先のブランチ
-          branch: auto-pr/develop-to-main    # PR用に自動作成される一時的なブランチ名
-          title: "【自動】develop から main への反映"
+          branch: auto-pr/feature-to-main    # PR用に自動作成される一時的なブランチ名
+          title: "【自動】feature から main への反映"
           body: |
             GitHub Actionsによって自動生成されたプルリクエストです。
-            developブランチの変更をmainにマージします。
+            featureブランチの変更をmainにマージします。
             変更内容を確認してマージしてください。
