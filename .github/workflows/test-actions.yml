@@ -4,7 +4,7 @@ name: Auto Create Pull Request
 on:
   push:
     branches:
-      - main
+      - 'feature/**'
 
 jobs:
   create-pr:
