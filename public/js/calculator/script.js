@@ -103,6 +103,7 @@ function buildCalculatorDataFromMaster(masterData) {
     const weeklyBossMap = createNameMap(masterData.WeeklyBossData, "WeeklyBossID");
     const bossItemMap = createNameMap(masterData.BossItemData, "BossItemID");
     const specialtyProductMap = createNameMap(masterData.SpecialtyProductData, "SpecialtyProductID");
+    const gemstoneMap = createNameMap(masterData.GemstoneData, "ElementID", "Name");
     const elementMap = createNameMap(masterData.ElementData, "ElementID");
 
     const sortedLevelSettings = [...levelUpSettings].sort((left, right) => Number(left.current_level) - Number(right.current_level));
@@ -112,7 +113,7 @@ function buildCalculatorDataFromMaster(masterData) {
         const levelSegments = buildLevelSegments(
             sortedLevelSettings,
             ascensionByLevel,
-            elementMap[character.ElementID],
+            gemstoneMap[character.ElementID] || elementMap[character.ElementID],
             bossItemMap[character.BossItemID],
             specialtyProductMap[character.SpecialtyProductID],
             enemyItemMap[character.EnemyItemID]
@@ -144,9 +145,10 @@ function buildCalculatorDataFromMaster(masterData) {
     };
 }
 
-function createNameMap(items, idKey) {
+function createNameMap(items, idKey, nameKey = "name") {
     return (items || []).reduce((accumulator, item) => {
-        accumulator[String(item[idKey])] = item.name;
+        const resolvedName = item[nameKey] ?? item.name ?? item.Name;
+        accumulator[String(item[idKey])] = resolvedName;
         return accumulator;
     }, {});
 }
@@ -214,7 +216,7 @@ function addLevelCosts(targetTotals, mora, exp, materials) {
     });
 }
 
-function buildLevelSegments(levelSettings, ascensionByLevel, elementName, bossItemName, specialtyProductName, enemyItemName) {
+function buildLevelSegments(levelSettings, ascensionByLevel, gemstoneName, bossItemName, specialtyProductName, enemyItemName) {
     return (levelSettings || []).map((setting, index, settings) => {
         const currentLevel = Number(setting.current_level);
         const nextLevel = Number(settings[index + 1]?.current_level || 90);
@@ -233,7 +235,7 @@ function buildLevelSegments(levelSettings, ascensionByLevel, elementName, bossIt
             });
         }
 
-        appendAscensionMaterials(breakthroughMaterials, ascensionRequirements, elementName, bossItemName, specialtyProductName, enemyItemName);
+        appendAscensionMaterials(breakthroughMaterials, ascensionRequirements, gemstoneName, bossItemName, specialtyProductName, enemyItemName);
 
         return {
             from: currentLevel,
@@ -247,13 +249,13 @@ function buildLevelSegments(levelSettings, ascensionByLevel, elementName, bossIt
     });
 }
 
-function appendAscensionMaterials(materials, ascensionRequirements, elementName, bossItemName, specialtyProductName, enemyItemName) {
+function appendAscensionMaterials(materials, ascensionRequirements, gemstoneName, bossItemName, specialtyProductName, enemyItemName) {
     const gemstone = ascensionRequirements.gemstone?.[0];
     if (gemstone?.quantity) {
         const itemClass = normalizeGemClass(gemstone.item_class);
         materials.push({
             key: `gem-${itemClass}`,
-            name: buildGemstoneName(elementName, itemClass),
+            name: buildGemstoneName(gemstoneName, itemClass),
             group: "gem",
             sortOrder: 0,
             amount: Number(gemstone.quantity)
@@ -300,15 +302,15 @@ function normalizeGemClass(itemClass) {
     return itemClass === "chenk" ? "chunk" : itemClass;
 }
 
-function buildGemstoneName(elementName, itemClass) {
+function buildGemstoneName(gemstoneName, itemClass) {
     const classLabels = {
-        sliver: "砕屑",
-        fragment: "欠片",
-        chunk: "塊",
-        gemstone: "宝石"
+        sliver: "・砕屑",
+        fragment: "・欠片",
+        chunk: "・塊",
+        gemstone: ""
     };
-    const label = classLabels[itemClass] || "素材";
-    return `${elementName || "元素"}の${label}`;
+    const label = classLabels[itemClass];
+    return `${gemstoneName || "元素"}${label}`;
 }
 
 function buildTalentSegment(setting, talentBookName, enemyItemName, weeklyBossName) {
