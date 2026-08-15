@@ -839,6 +839,36 @@
             "name": "左道の真諦者"
         }
     ],
+    "GemstoneData": [
+        {
+            "ElementID": 1,
+            "Name": "炎願のアゲート"
+        },
+        {
+            "ElementID": 2,
+            "Name": "澄明なラピスラズリ"
+        },
+        {
+            "ElementID": 3,
+            "Name": "自由のターコイズ"
+        },
+        {
+            "ElementID": 4,
+            "Name": "最勝のアメシスト"
+        },
+        {
+            "ElementID": 5,
+            "Name": "成長のエメラルド"
+        },
+        {
+            "ElementID": 6,
+            "Name": "自由のターコイズ"
+        },
+        {
+            "ElementID": 7,
+            "Name": "堅牢なトパーズ"
+        }
+    ],
     "characterLevelUpData": [
         {
             "current_level": 1,
@@ -1002,7 +1032,7 @@
                     "mora": 80000,
                     "gemstone": [
                         {
-                            "item_class": "chenk",
+                            "item_class": "chunk",
                             "quantity": 3
                         }
                     ],
@@ -1032,7 +1062,7 @@
                     "mora": 100000,
                     "gemstone": [
                         {
-                            "item_class": "chenk",
+                            "item_class": "chunk",
                             "quantity": 6
                         }
                     ],
