@@ -24,7 +24,8 @@ const getRegionName = (id) => {
         4: 'スメール',
         5: 'フォンテーヌ',
         6: 'ナタ',
-        7: 'ナド・クライ'
+        7: 'ナド・クライ',
+        8: 'スネージナヤ'
     };
     const regionKey = Math.floor(Number(id) / 100);
     return regionByHundreds[regionKey] || '';
@@ -156,13 +157,7 @@ function initializeModalFilters(data) {
     talentDiv.innerHTML = '';
     weeklyDiv.innerHTML = '';
 
-    (data.BossItemData || []).forEach(item => {
-        const id = `boss-${item.BossItemID}`;
-        const wrap = document.createElement('label');
-        wrap.className = 'filter-checkbox';
-        wrap.innerHTML = `<input type="checkbox" id="${id}" data-type="boss" value="${item.BossItemID}"><span>${item.name}</span>`;
-        bossDiv.appendChild(wrap);
-    });
+    appendRegionSection(bossDiv, data.BossItemData || [], 'BossItemID', 'boss', 'boss');
 
     (data.EnemyItemData || []).forEach(item => {
         const id = `enemy-${item.EnemyItemID}`;
