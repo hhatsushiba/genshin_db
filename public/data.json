@@ -471,6 +471,14 @@
         {
             "EnemyItemID": "47",
             "name": "優美なる焔剣の柄"
+        },
+        {
+            "EnemyItemID": "48",
+            "name": "合成獣の原生結合コア"
+        },
+        {
+            "EnemyItemID": "49",
+            "name": "幻光の晶鱗石"
         }
     ],
     "SpecialtyProductData": [
@@ -701,6 +709,14 @@
         {
             "SpecialtyProductID": "705",
             "name": "琥珀香"
+        },
+        {
+            "SpecialtyProductID": "801",
+            "name": "フロック草"
+        },
+        {
+            "SpecialtyProductID": "802",
+            "name": "フロストフラワー"
         }
     ],
     "TalentBookData": [
