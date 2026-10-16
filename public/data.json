@@ -281,6 +281,10 @@
         {
             "BossItemID": "802",
             "name": "空を泳ぐものの尾"
+        },
+        {
+            "BossItemID": "803",
+            "name": "さすらう者のひび割れた鎧"
         }
     ],
     "EnemyItemData": [
@@ -717,6 +721,10 @@
         {
             "SpecialtyProductID": "802",
             "name": "フロストフラワー"
+        },
+        {
+            "SpecialtyProductID": "803",
+            "name": "ザラトイアリャーク"
         }
     ],
     "TalentBookData": [
@@ -3031,31 +3039,31 @@
             "CharID": 120,
             "Name": "ヴェスナ",
             "Rarity": "5",
-            "ElementID": 4,
-            "WeaponTypeID": "",
-            "BossItemID": "",
-            "EnemyItemID": "",
-            "SpecialtyProductID": "",
-            "TalentBookID": "",
-            "WeeklyBossID": "",
+            "ElementID": 3,
+            "WeaponTypeID": "1",
+            "BossItemID": "803",
+            "EnemyItemID": "49",
+            "SpecialtyProductID": "803",
+            "TalentBookID": "803",
+            "WeeklyBossID": "14",
             "AffiliationID": 8,
-            "BirthMonth": "",
-            "BirthDay": ""
+            "BirthMonth": "2",
+            "BirthDay": "4"
         },
         {
             "CharID": 121,
             "Name": "ヴォジャニーツァ",
             "Rarity": "5",
-            "ElementID": 4,
-            "WeaponTypeID": "",
-            "BossItemID": "",
-            "EnemyItemID": "",
-            "SpecialtyProductID": "",
-            "TalentBookID": "",
-            "WeeklyBossID": "",
+            "ElementID": 2,
+            "WeaponTypeID": "4",
+            "BossItemID": "801",
+            "EnemyItemID": "48",
+            "SpecialtyProductID": "802",
+            "TalentBookID": "802",
+            "WeeklyBossID": "14",
             "AffiliationID": 8,
-            "BirthMonth": "",
-            "BirthDay": ""
+            "BirthMonth": "3",
+            "BirthDay": "29"
         }
     ]
 }
